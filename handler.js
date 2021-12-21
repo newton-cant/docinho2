@@ -22,7 +22,7 @@ module.exports = handle = (client, Client) => {
                 res = await axios.get(`${configs.apiUrl}/api/ytmp4/2?apikey=${configs.zeksKey}&url=${data.body}`)
                 if(res.data.status == false) data.reply(res.data.message)
                 ytm = res.data.result
-                teks = `*Dados obtidos com sucesso!*\n\n*Titulo* : ${ytm.title}\n*Tamano* : ${ytm.size}\n*Qualidade* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*link* : ${ytm.source}\n\n_Aguarde o envio do arquivo de mídia; isso pode levar alguns minutos_`
+                teks = `*Dados obtidos com sucesso!*\n\n*Titulo* : ${ytm.title}\n*Tamanho* : ${ytm.size}\n*Qualidade* : ${ytm.quality}\n*Ext* : ${ytm.ext}\n*link* : ${ytm.source}\n\n_Aguarde o envio do arquivo de mídia; isso pode levar alguns minutos_`
                 if(Number(ytm.size.split(' MB')[0]) >= 50.00) return Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', `*Data Berhasil Didapatkan!*\n\n*Title* : ${ytm.title}\n*Ukuran* : ${ytm.size}\n*Kualitas* : ${ytm.quality}\n*Ext* : mp4\n*Link* : ${ytm.link}\n\n_Untuk durasi lebih dari batas disajikan dalam bentuk link_`, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.thumb}`, 'thumb.jpg', teks, data.message)
                 Client.sendFileFromUrl(data.from, `${ytm.link}`, `${ytm.title} - Download.mp4`, `Video telah terkirim @${data.sender.split('@')[0]}`, data.message)
